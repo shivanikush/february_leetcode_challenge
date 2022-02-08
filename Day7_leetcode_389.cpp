@@ -49,3 +49,19 @@ public:
 };
 /*Instead of storing the diff at each point, passing it over to the next element would do the trick. We do this till the last element of t. Remember, t has one letter more than s always :)
 Order of characters does not affect it as we are more focused on the difference of overall sum of ASCII of each letter in each arrray, s and t.*/
+// using unordered maps
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        unordered_map<char,int> num;
+        for(char c:s){
+            num[c]++;
+        }
+        for(char g : t) num[g]--;
+        for(auto m: num){
+            if(m.second != 0) 
+                return m.first;
+        }
+        return 0;
+    }
+};
